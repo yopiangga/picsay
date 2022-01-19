@@ -8,7 +8,19 @@ class Collection {
   int views;
   List<User> likes = [];
   List<Comment> comments = [];
-  DateTime? date;
+  DateTime? dateTime;
 
-  Collection({this.id = "", this.title = "", this.views = 0});
+  Collection({this.id = "", this.title = "", this.views = 0, this.dateTime});
+
+  void addImage(String i) {
+    image.add(i);
+  }
+
+  void addLike(User u) {
+    likes.add(u);
+  }
+
+  void addComment(Comment c) {
+    comments.add(c);
+  }
 }

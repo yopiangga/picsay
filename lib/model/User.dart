@@ -6,4 +6,12 @@ class User {
   List<User> following = [];
 
   User({this.id = "", this.image = "", this.fullname = ""});
+
+  void addFollower(User u) {
+    followers.add(u);
+  }
+
+  void addFollowing(User u) {
+    following.add(u);
+  }
 }

@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Picsay',
       home: Dashboard(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
