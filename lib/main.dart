@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:picsay/provider/PCollection.dart';
 import 'package:picsay/screen/Dashboard.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +14,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Picsay',
-      home: Dashboard(),
+      home: MultiProvider(
+        providers: [ChangeNotifierProvider(create: (context) => PCollection())],
+        child: Dashboard(),
+      ),
       debugShowCheckedModeBanner: false,
     );
   }

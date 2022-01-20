@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:picsay/custom/CustomColors.dart';
+import 'package:picsay/provider/PCollection.dart';
+import 'package:picsay/widget/WCollection.dart';
+import 'package:provider/provider.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -29,6 +32,9 @@ class _DashboardState extends State<Dashboard>
 
   @override
   Widget build(BuildContext context) {
+    final collection = Provider.of<PCollection>(context);
+    final allCollection = collection.collections;
+
     return Scaffold(
       backgroundColor: CustomColors.dark,
       appBar: AppBar(
@@ -66,7 +72,7 @@ class _DashboardState extends State<Dashboard>
                   delegate: SliverChildListDelegate(
                     [
                       Container(
-                        margin: EdgeInsets.only(top: 10),
+                        margin: EdgeInsets.only(top: 10, bottom: 5),
                         padding: EdgeInsets.only(left: 20, right: 20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,21 +101,15 @@ class _DashboardState extends State<Dashboard>
                   padding: EdgeInsets.all(20),
                   sliver: SliverGrid(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 20.0,
-                      crossAxisSpacing: 20,
-                    ),
-                    delegate: SliverChildListDelegate(
-                      [
-                        Container(width: 100, height: 100, color: Colors.blue),
-                        Container(width: 100, height: 100, color: Colors.red),
-                        Container(width: 100, height: 100, color: Colors.green),
-                        Container(
-                            width: 100, height: 100, color: Colors.orange),
-                        Container(width: 100, height: 100, color: Colors.blue),
-                        Container(width: 100, height: 100, color: Colors.red),
-                      ],
-                    ),
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 24.0,
+                        crossAxisSpacing: 12,
+                        childAspectRatio: 4 / 5),
+                    delegate: SliverChildListDelegate(allCollection
+                        .map((e) => WCollection(
+                              item: e,
+                            ))
+                        .toList()),
                   ),
                 ),
               ],
