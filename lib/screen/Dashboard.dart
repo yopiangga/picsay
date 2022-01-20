@@ -56,41 +56,72 @@ class _DashboardState extends State<Dashboard>
           ),
         ],
       ),
-      body: TabBarView(
-        controller: _controller,
-        children: [
-          ListView(
-            children: [
-              Container(
-                margin: EdgeInsets.only(top: 10),
-                padding: EdgeInsets.only(left: 20, right: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Hello",
-                      style: TextStyle(
-                          color: Colors.white.withOpacity(0.7), fontSize: 16),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      "Alfian Prisma Yopiangga",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    )
-                  ],
+      body: Container(
+        child: TabBarView(
+          controller: _controller,
+          children: [
+            CustomScrollView(
+              slivers: [
+                SliverList(
+                  delegate: SliverChildListDelegate(
+                    [
+                      Container(
+                        margin: EdgeInsets.only(top: 10),
+                        padding: EdgeInsets.only(left: 20, right: 20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Hello",
+                              style: TextStyle(
+                                  color: Colors.white.withOpacity(0.7),
+                                  fontSize: 16),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              "Alfian Prisma Yopiangga",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-          Center(
-            child: Text("Page Add"),
-          ),
-          Center(
-            child: Text("Page Like"),
-          ),
-        ],
+                SliverPadding(
+                  padding: EdgeInsets.all(20),
+                  sliver: SliverGrid(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 20.0,
+                      crossAxisSpacing: 20,
+                    ),
+                    delegate: SliverChildListDelegate(
+                      [
+                        Container(width: 100, height: 100, color: Colors.blue),
+                        Container(width: 100, height: 100, color: Colors.red),
+                        Container(width: 100, height: 100, color: Colors.green),
+                        Container(
+                            width: 100, height: 100, color: Colors.orange),
+                        Container(width: 100, height: 100, color: Colors.blue),
+                        Container(width: 100, height: 100, color: Colors.red),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Center(
+              child: Text("Page Add"),
+            ),
+            Center(
+              child: Text("Page Like"),
+            ),
+          ],
+        ),
       ),
     );
   }

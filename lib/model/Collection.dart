@@ -3,24 +3,31 @@ import 'package:picsay/model/User.dart';
 
 class Collection {
   String id;
-  List<String> image = [];
+  List<String>? image = [];
   String title;
   int views;
-  List<User> likes = [];
-  List<Comment> comments = [];
+  List<User>? likes = [];
+  List<Comment>? comments = [];
   DateTime? dateTime;
 
-  Collection({this.id = "", this.title = "", this.views = 0, this.dateTime});
+  Collection(
+      {this.id = "",
+      this.title = "",
+      this.views = 0,
+      this.dateTime,
+      this.image,
+      this.likes,
+      this.comments});
 
   void addImage(String i) {
-    image.add(i);
+    image?.add(i);
   }
 
   void addLike(User u) {
-    likes.add(u);
+    likes?.add(u);
   }
 
   void addComment(Comment c) {
-    comments.add(c);
+    comments?.add(c);
   }
 }
