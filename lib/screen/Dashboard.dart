@@ -62,6 +62,16 @@ class _DashboardState extends State<Dashboard>
           ),
         ],
       ),
+      bottomNavigationBar: TabBar(
+        controller: _controller,
+        // indicator: BoxDecoration(color: CustomColors.purpleLight),
+        indicatorColor: CustomColors.purpleLight,
+        tabs: [
+          Tab(icon: Icon(Icons.home)),
+          Tab(icon: Icon(Icons.add_circle_outline)),
+          Tab(icon: Icon(Icons.favorite_border_outlined)),
+        ],
+      ),
       body: Container(
         child: TabBarView(
           controller: _controller,
